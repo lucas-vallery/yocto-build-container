@@ -40,7 +40,7 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
 RUN useradd -ms /bin/bash user
-RUN su user
+USER user
 
 RUN cd /opt
 RUN mkdir sources
