@@ -40,7 +40,8 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
 RUN useradd -ms /bin/bash user
-USER user
 
-RUN cd /opt
-RUN mkdir sources
+WORKDIR /home/user
+RUN mkdir sources && chown user:user sources
+
+USER user

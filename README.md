@@ -15,9 +15,15 @@ podman build -t yocto-raspi-kirkstone .
 *"yocto-raspi-kirkstone"* can be changed by whatever name you want to give to your container.
 
 ## Container directories
-|    Directory    |    Purpose    |
-|-----------------|---------------|
-|/opt/sources     | Yocto sources |
+
+|      Directory      |    Purpose    |
+|---------------------|---------------|
+|/home/user/sources   | Yocto sources |
+
+You can mount your yocto sources to the container using:
+```bash
+podman run --rm -it -v ./yocto_sources/:/home/user/sources --entrypoint bash yocto-raspi-kirkstone:latest
+```
 
 ## Tips
 ### Run the container with bash as entry point
