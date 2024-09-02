@@ -43,5 +43,8 @@ RUN useradd -ms /bin/bash user
 
 WORKDIR /home/user
 RUN mkdir sources && chown user:user sources
+RUN mkdir localconf && chown user:user localconf
+
+ENV TEMPLATECONF /home/user/localconf
 
 USER user
