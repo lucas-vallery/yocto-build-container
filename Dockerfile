@@ -35,6 +35,8 @@ nano
 RUN apt-get install -y git make inkscape texlive-latex-extra
 RUN apt-get install -y sphinx python3-saneyaml python3-sphinx-rtd-theme
 
+RUN apt install dumb-init
+
 RUN locale-gen en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
@@ -44,7 +46,11 @@ RUN useradd -ms /bin/bash user
 WORKDIR /home/user
 RUN mkdir sources && chown user:user sources
 RUN mkdir localconf && chown user:user localconf
+RUN mkdir outputs && chown user:user outputs
 
+# Set Yocto localconf path
 ENV TEMPLATECONF /home/user/localconf
 
 USER user
+
+ENTRYPOINT ["dumb-init", "/home/user/buildscript.sh"]

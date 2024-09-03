@@ -16,17 +16,19 @@ podman build -t yocto-raspi-kirkstone .
 
 ## Container directories
 
-|      Directory      |     Purpose      |
-|---------------------|------------------|
-|/home/user/sources   |  Yocto sources   |
-|/home/user/localconf | Yocto local conf |
+|      Directory      |     Purpose          |
+|---------------------|----------------------|
+|/home/user/sources   | Yocto sources        |
+|/home/user/localconf | Yocto local conf     |
+|/home/user/outputs   | Yocto build products |
 
 You can mount your yocto sources to the container using:
 ```bash
 podman run --rm -it \
 -v ./yocto_sources/:/home/user/sources \
 -v ./raspberrypi-zero-conf/:/home/user/localconf \
---entrypoint bash yocto-raspi-kirkstone:latest
+-v ./outputs/:/home/user/outputs
+yocto-raspi-kirkstone:latest
 ```
 
 ## Tips
