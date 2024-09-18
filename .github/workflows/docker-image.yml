@@ -2,15 +2,16 @@ name: Docker Image Yocto Build CI
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-
   build-and-push-image:
     runs-on: ubuntu-latest
 
