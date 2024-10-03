@@ -48,6 +48,8 @@ RUN mkdir sources && chown user:user sources
 RUN mkdir localconf && chown user:user localconf
 RUN mkdir outputs && chown user:user outputs
 
+RUN chown -R user:user /home/user
+
 # Set Yocto localconf path
 ENV TEMPLATECONF /home/user/localconf
 
